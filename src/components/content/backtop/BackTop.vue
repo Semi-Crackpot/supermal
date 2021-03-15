@@ -1,12 +1,17 @@
 <template>
   <div class="back-top">
-    <img src="@/assets/img/common/top.png">
+    <img src="@/assets/img/common/top.png" @click="btnBackTop">
   </div>
 </template>
 
 <script>
 export default {
-  name : "BackTop"
+  name : "BackTop",
+  methods: {
+    btnBackTop() {
+      this.$emit('btnBackTop')
+    },
+  }
 }
 </script>
 

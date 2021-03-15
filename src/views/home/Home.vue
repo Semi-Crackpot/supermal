@@ -5,7 +5,12 @@
         <div>购物街</div>
       </template>
     </nav-bar>
-    <scroll class="content">
+    <scroll class="content"
+            ref="scroll"
+            :probe-type="3"
+            @scroll="contentScroll"
+            :pull-up-load="true"
+            @pullingUp="loadMore">
       <home-swiper :banners="banners"></home-swiper>
       <home-recommend-view :recommends="recommends"></home-recommend-view>
       <feature></feature>
@@ -14,7 +19,7 @@
       <goods-list :goods="goods[currentType].list"></goods-list>
     </scroll>
 
-    <back-top></back-top>
+    <back-top @click="btnBackTop" v-show="isShowBackTop"></back-top>
   </div>
 </template>
 
@@ -53,7 +58,8 @@ export default {
         'new': {page: 0, list:[]},
         'sell': {page: 0, list:[]},
       },
-      currentType:'pop'
+      currentType:'pop',
+      isShowBackTop: false,
     }
   },
   created() {
@@ -79,12 +85,23 @@ export default {
           break;
       }
     },
+    btnBackTop() {
+      this.$refs.scroll.scrollTo(0, 0)
+    },
+    contentScroll(position) {
+        this.isShowBackTop = (-position.y) > 2000
+    },
+    loadMore(){
+        this.getHomeGoods(this.currentType)
+
+        this.$refs.scroll.scroll.refresh()
+    },
+
     /**
      * 网络请求相关方法
      */
     getHomeMultidata() {
       getHomeMultidata().then(res => {
-      // console.log(res)
       this.banners = res.data.banner.list,
       this.recommends = res.data.recommend.list
       })
@@ -94,7 +111,8 @@ export default {
       getHomeGoods(type, page).then(res => {
         this.goods[type].list.push(...res.data.list)
         this.goods[type].page += 1
-        // console.log(res)
+
+        this.$refs.scroll.finishPullUp()
       })
     }
   }
