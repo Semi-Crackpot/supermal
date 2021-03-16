@@ -31,7 +31,8 @@ export default {
         probeType:this.probeType,
         click:true,
         // mouseWheel:true,
-        // observeDOM:true,
+        observeDOM:true,
+        observeImage: true,
         pullUpLoad: true,
     })
 
@@ -48,7 +49,7 @@ export default {
     },
     finishPullUp() {
         this.scroll.finishPullUp()
-      }
+    }
   }
 }
 </script>
