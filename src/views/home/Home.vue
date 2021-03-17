@@ -74,8 +74,8 @@ export default {
     this.getHomeGoods('sell')
   },
   activated() {
-    this.$refs.scroll.scrollTo(0, this.saveY, 3000)
-    // this.$refs.scroll.refresh()
+    this.$refs.scroll.scrollTo(0, this.saveY, 30)
+    this.$refs.scroll.scroll.refresh()
   },
   deactivated() {
     this.saveY = this.$refs.scroll.scroll.y
@@ -125,6 +125,7 @@ export default {
     getHomeGoods(type) {
       const page = this.goods[type].page + 1
       getHomeGoods(type, page).then(res => {
+        console.log(res.data)
         this.goods[type].list.push(...res.data.list)
         this.goods[type].page += 1
 
