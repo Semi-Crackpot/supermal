@@ -3,10 +3,10 @@
 
       <tab-bar-item path='/home' activeColor = "">
         <template v-slot:item-icon>
-            <img  src = "../../../assets/img/tabbar/home.svg" alt="">
+            <img  src = "@/assets/img/tabbar/home.svg" alt="">
         </template>
         <template v-slot:item-icon-active>
-            <img  src="../../../assets/img/tabbar/home_active.svg" alt="">
+            <img  src="@/assets/img/tabbar/home_active.svg" alt="">
         </template>
         <template v-slot:item-text>
             <div >首页</div>

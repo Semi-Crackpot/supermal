@@ -9,9 +9,14 @@
           <div v-for="(item, index) in navBarItem" :key="item"
                class="detail-title-text"
                @click="detailTitleClick(index)"
-               :class="{active: index == currentIndex}">
+               :class="{active: index === currentIndex}">
                {{item}}
-               </div>
+          </div>
+        </div>
+      </template>
+      <template v-slot:right>
+        <div class="detail-cart">
+          <img src = '@/assets/img/detail/to_cart.svg' @click="cartIconClick">
         </div>
       </template>
     </nav-bar>
@@ -25,7 +30,7 @@ export default {
   data() {
     return {
       navBarItem:['商品','参数','评论','推荐'],
-      currentIndex: 0
+      currentIndex: 0,
     }
   },
   components:{
@@ -34,9 +39,13 @@ export default {
   methods: {
     detailTitleClick(index) {
       this.currentIndex = index
+      this.$emit("detailTitleClick", index)
     },
     backIconClick() {
       this.$router.back()
+    },
+    cartIconClick() {
+      this.$router.replace('/cart')
     }
   }
 }
@@ -59,5 +68,13 @@ export default {
 
   .back-icon{
     margin-top: 10px;
+  }
+
+  .detail-cart img{
+    width: 24px;
+    height: 24px;
+    margin-top: 3px;
+    vertical-align: middle;
+    margin-bottom: 3px;
   }
 </style>
