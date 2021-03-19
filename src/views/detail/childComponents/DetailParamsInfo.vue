@@ -25,7 +25,7 @@ export default {
 		paramInfo: {
       type: Object
     }
-  },
+  }
 }
 </script>
 

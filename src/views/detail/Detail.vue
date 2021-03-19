@@ -121,7 +121,7 @@ export default {
       obj.desc = this.goods.desc
       obj.nowPrice = this.goods.nowPrice
       this.$store.dispatch("addCart", obj)
-      console.log(this.$store.state.cartList)
+      console.log(obj.nowPrice)
     }
   },
 }

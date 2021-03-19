@@ -26,9 +26,9 @@
 </template>
 
 <script>
-import HomeSwiper from '@/views/home/childComps/HomeSwiper'
-import HomeRecommendView from '@/views/home/childComps/HomeRecommendView'
-import Feature from '@/views/home/childComps/feature.vue'
+import HomeSwiper from '@/views/home/childComponents/HomeSwiper'
+import HomeRecommendView from '@/views/home/childComponents/HomeRecommendView'
+import Feature from '@/views/home/childComponents/feature.vue'
 
 import TabControl from '@/components/content/tabControl/TabControl.vue'
 import GoodsList from '@/components/content/goods/GoodsList'
