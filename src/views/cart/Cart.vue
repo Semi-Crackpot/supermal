@@ -4,13 +4,17 @@
       购物车({{getLength}})
     </template>
   </nav-bar>
+
   <scroll class="scroll" ref="scroll">
     <cart-list class="cart-list"></cart-list>
   </scroll>
+
+  <cart-bottom-bar></cart-bottom-bar>
 </template>
 
 <script>
 import NavBar from '@/components/common/navbar/NavBar.vue'
+import CartBottomBar from './childComponents/CartBottomBar'
 import {mapGetters} from 'vuex'
 import CartList from './childComponents/CartList.vue'
 import Scroll from '../../components/common/scroll/Scroll.vue'
@@ -20,6 +24,7 @@ export default {
     NavBar,
     CartList,
     Scroll,
+    CartBottomBar,
   },
   computed: {
     ...mapGetters(['getLength'])

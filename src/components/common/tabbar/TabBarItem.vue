@@ -7,10 +7,14 @@
       <div v-else>
         <slot name="item-icon-active"></slot>
       </div>
-
-      <div :style="activateStyle" :class="iconIsActive">
+      <!-- 插槽不能放样式，那里想变样式就在哪里加div和样式 -->
+      <!-- <div :style="{activateStyle:iconIsActive}" :class="iconIsActive">
         <slot name="item-text"></slot>
-        <!-- 插槽不能放样式，那里想变样式就在哪里加div和样式 -->
+
+      </div> -->
+
+      <div :class="{active:iconIsActive}">
+        <slot name="item-text"></slot>
       </div>
 
     </div>
@@ -36,9 +40,9 @@ export default {
     iconIsActive() {
       return this.$route.path.indexOf(this.path) != -1
     },
-    activateStyle() {
-      return this.iconIsActive ? {color: this.activeColor} : {}
-    }
+    // activateStyle() {
+    //   return this.iconIsActive ? {color: this.activeColor} : {}
+    // }
   },
   methods: {
     itemClick() {
@@ -64,11 +68,11 @@ export default {
     margin-bottom: 3px;
   }
 
-  /* .active {
-    color: black;
+  .active {
+    color: var(--color-tint);
   }
 
-  .noactive {
+  /* .noactive {
     color: gray
   } */
 </style>

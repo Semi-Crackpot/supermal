@@ -4,7 +4,7 @@
       <CheckButton @checkBtnClick="checkedChange" v-model="itemInfo.checked"></CheckButton>
     </div> -->
     <div class="item-check" @click="btnIconIsActive">
-      <div v-if="iconIsActive" >
+      <div v-if="!itemInfo.check" >
         <img src="@/assets/img/cart/dagou.svg">
       </div>
       <div v-else>
@@ -35,12 +35,12 @@ export default {
   },
   data() {
     return {
-      iconIsActive:false
-      }
+      // iconIsActive:false
+    }
   },
   methods: {
     btnIconIsActive() {
-      this.iconIsActive = !this.iconIsActive
+      this.$store.dispatch("checkChange", this.itemInfo)
     }
   }
 }
